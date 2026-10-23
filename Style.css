@@ -1,0 +1,358 @@
+/* ==========================================
+   1. Theme & Custom Properties (:root)
+   ================================---------- */
+:root {
+    --brand-color: #4f46e5;       /* Indigo */
+    --brand-hover: #4338ca;
+    --accent-color: #06b6d4;      /* Cyan */
+    --surface-bg: #f8fafc;        /* Main background */
+    --card-bg: #ffffff;           /* Card background */
+    --sidebar-bg: #ffffff;        /* Sidebar background */
+    --text-primary: #0f172a;      /* Dark slate */
+    --text-secondary: #64748b;    /* Muted gray */
+    --border-color: #e2e8f0;
+    
+    --badge-success-bg: #d1fae5;
+    --badge-success-text: #065f46;
+    --badge-warning-bg: #fef3c7;
+    --badge-warning-text: #92400e;
+    --badge-danger-bg: #fee2e2;
+    --badge-danger-text: #991b1b;
+    --badge-info-bg: #e0f2fe;
+    --badge-info-text: #0369a1;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --transition-fast: 250ms ease;
+}
+
+/* ==========================================
+   Stretch Goal: Dark Theme Implementation
+   ================================---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand-color: #6366f1;
+        --brand-hover: #818cf8;
+        --accent-color: #22d3ee;
+        --surface-bg: #0f172a;
+        --card-bg: #1e293b;
+        --sidebar-bg: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --border-color: #334155;
+        
+        --badge-success-bg: rgba(6, 95, 70, 0.4);
+        --badge-success-text: #34d399;
+        --badge-warning-bg: rgba(145, 28, 139, 0.4);
+        --badge-warning-text: #fbbf24;
+        --badge-danger-bg: rgba(153, 27, 27, 0.4);
+        --badge-danger-text: #e9723c;
+        --badge-info-bg: rgba(3, 105, 161, 0.4);
+        --badge-info-text: #38bdf8;
+        
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* ==========================================
+   Base Layout & CSS Grid (Macro Structure)
+   ================================---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--surface-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   Sidebar & Navigation (Flexbox)
+   ================================---------- */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 32px;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--brand-color);
+    font-size: 1.25rem;
+}
+
+.sidebar-brand i {
+    font-size: 1.5rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-item:hover, 
+.nav-item.active {
+    background-color: var(--surface-bg);
+    color: var(--brand-color);
+}
+
+/* ==========================================
+   Main Content Area & Header (Flexbox)
+   ================================---------- */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+    overflow-y: auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.header-title h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+    background-color: var(--surface-bg);
+    color: var(--text-primary);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 6px 14px 6px 6px;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-profile span {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   Cards Grid & Micro-Interactions
+   ================================---------- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    outline: none;
+    /* Requirement 5: 250ms transform/box-shadow micro-interactions for hover & focus */
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover,
+.card:focus {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand-color);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+/* Category Accent Styles */
+.card-icon.food { background: rgba(79, 70, 229, 0.1); color: #4f46e5; }
+.card-icon.transport { background: rgba(6, 182, 212, 0.1); color: #06b6d4; }
+.card-icon.rent { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.card-icon.entertainment { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.card-icon.savings { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.card-icon.utilities { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+.card-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.card-badge.success { background: var(--badge-success-bg); color: var(--badge-success-text); }
+.card-badge.warning { background: var(--badge-warning-bg); color: var(--badge-warning-text); }
+.card-badge.danger { background: var(--badge-danger-bg); color: var(--badge-danger-text); }
+.card-badge.info { background: var(--badge-info-bg); color: var(--badge-info-text); }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.category-name {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.category-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.category-amount .limit {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--brand-color);
+    border-radius: 3px;
+}
+
+.progress-fill.success { background-color: #10b981; }
+.progress-fill.warning { background-color: #f59e0b; }
+.progress-fill.danger { background-color: #ef4444; }
+.progress-fill.info { background-color: #3b82f6; }
+
+.footer-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   4. Responsive Design (Below 768px)
+   ================================---------- */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Collapses into a single column layout */
+    }
+
+    .sidebar {
+        display: none; /* Can be toggled with JS later, hidden for shell standard mobile view or stacked */
+    }
+
+    .main-content {
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
