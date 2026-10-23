@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise Dashboard</title>
+    <link rel="stylesheet" href="Sttle.css">
+    <!-- FontAwesome for Dashboard Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar / Navigation Menu -->
+        <aside class="sidebar" aria-label="Sidebar Navigation">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+                <h2>SpendWise</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-house" aria-hidden="true"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Transactions</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-wallet" aria-hidden="true"></i> Budgets</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-title">
+                    <h1>Financial Overview</h1>
+                    <p class="header-subtitle">Welcome back, Alex! Here is your spending summary.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i></button>
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Alex's Avatar">
+                        <span>Alex M.</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid: Category Cards -->
+            <section class="cards-grid">
+                
+                <!-- Card 1: Food -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon food"><i class="fa-solid fa-utensils"></i></div>
+                        <span class="card-badge warning">82% Used</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Food & Dining</span>
+                        <h3 class="category-amount">$450.00 <span class="limit">/ $550</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill" style="width: 82%;"></div></div>
+                        <span class="footer-text">Last spent: 2 hrs ago</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Transport -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon transport"><i class="fa-solid fa-car"></i></div>
+                        <span class="card-badge success">45% Used</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Transport</span>
+                        <h3 class="category-amount">$135.00 <span class="limit">/ $300</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill success" style="width: 45%;"></div></div>
+                        <span class="footer-text">Last spent: Yesterday</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Rent -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon rent"><i class="fa-solid fa-house-chimney"></i></div>
+                        <span class="card-badge success">100% Paid</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Rent & Housing</span>
+                        <h3 class="category-amount">$1,200.00 <span class="limit">/ $1,200</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill success" style="width: 100%;"></div></div>
+                        <span class="footer-text">Paid on Oct 1st</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Entertainment -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon entertainment"><i class="fa-solid fa-film"></i></div>
+                        <span class="card-badge warning">75% Used</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Entertainment</span>
+                        <h3 class="category-amount">$150.00 <span class="limit">/ $200</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill warning" style="width: 75%;"></div></div>
+                        <span class="footer-text">Last spent: 3 days ago</span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Savings -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon savings"><i class="fa-solid fa-piggy-bank"></i></div>
+                        <span class="card-badge info">Goal on track</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Savings</span>
+                        <h3 class="category-amount">$800.00 <span class="limit">/ $1,000</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill info" style="width: 80%;"></div></div>
+                        <span class="footer-text">Auto-transfer active</span>
+                    </div>
+                </div>
+
+                <!-- Card 6: Utilities -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <div class="card-icon utilities"><i class="fa-solid fa-bolt"></i></div>
+                        <span class="card-badge danger">90% Used</span>
+                    </div>
+                    <div class="card-body">
+                        <span class="category-name">Utilities</span>
+                        <h3 class="category-amount">$225.00 <span class="limit">/ $250</span></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar"><div class="progress-fill danger" style="width: 90%;"></div></div>
+                        <span class="footer-text">Due in 4 days</span>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
